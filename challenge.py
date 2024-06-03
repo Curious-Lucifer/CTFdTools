@@ -87,7 +87,7 @@ class Challenge:
 
         self.challenge_id = None
 
-    def load_yaml(self, filename: str = 'task.yaml'):
+    def load_yaml(self, filename: str = 'task.yml'):
         with open(os.path.join(self.challenge_path, filename)) as f:
             y = yaml.safe_load(f)
         challenge_from_yaml = ChallengeYamlModel(**y)
