@@ -138,7 +138,9 @@ class Challenge:
 
         description = self.description
         if self.author is not None:
-            description += f'\n<br>\n\nAuthor : {self.author}'
+            if self.description != '':
+                description += '\n<br>\n\n'
+            description += f'Author : {self.author}'
 
         challenge_id = self.ctfd.post_challenge(
             self.name, self.category, description, self.connection_info, 
