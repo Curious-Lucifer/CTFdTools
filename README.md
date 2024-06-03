@@ -12,8 +12,8 @@
 - `hints` (Optional)
 
 ### CTFd Info
-- `type` : 可以是 `static` 或 `dynamic`
-- `value` : 如果 `type` 是 `static` 的話，`value` 是這個 challenge 的分數，如果 `type` 是 `dynamic` 的話，`value` 會是
+- `type` : 可以是 `standard` 或 `dynamic`
+- `value` : 如果 `type` 是 `standard` 的話，`value` 是這個 challenge 的分數，如果 `type` 是 `dynamic` 的話，`value` 會是
     ```yaml
     value:
       function: linear
