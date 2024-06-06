@@ -51,6 +51,7 @@ class ChallengeYamlModel(BaseModel):
 class Challenge:
     def __init__(self, 
         challenge_path: str = '.', 
+        ip: str = '127.0.0.1', 
         ctfd: CTFd | None = None, 
         name: str | None = None, 
         category: str | None = None, 
@@ -67,6 +68,7 @@ class Challenge:
         canonical_name: str | None = None
     ):
         self.challenge_path = challenge_path
+        self.ip = ip
         self.ctfd = ctfd
 
         self.name = name
@@ -142,8 +144,12 @@ class Challenge:
                 description += '\n<br>\n\n'
             description += f'Author : {self.author}'
 
+        connection_info = self.connection_info
+        if connection_info is not None:
+            connection_info = connection_info.format(ip=self.ip)
+
         challenge_id = self.ctfd.post_challenge(
-            self.name, self.category, description, self.connection_info, 
+            self.name, self.category, description, connection_info, 
             self.type, self.value, self.state
         )
         if challenge_id == -1:
