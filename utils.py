@@ -1,6 +1,6 @@
-import os.path
+import os, os.path
 import re
-import os
+import sys
 import zipfile
 from contextlib import contextmanager
 
@@ -42,4 +42,16 @@ def path2archivepath(path: str, output_path: str):
     parts = os.path.normpath(path).split(os.sep)
     parts[0] = archive_dirname
     return os.path.join(*parts)
+
+
+def info(*args):
+    print('[\033[94m*\033[0m]', *args)
+
+
+def success(*args):
+    print('[\033[92m+\033[0m]', *args)
+
+
+def error(*args):
+    print('[\033[91mX\033[0m]', *args, file=sys.stderr)
 
